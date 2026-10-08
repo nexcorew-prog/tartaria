@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, FileCheck2, Globe2, MapPin } from "lucide-react";
 import { FaqSection } from "@/components/faq-section";
+import { MotionEntrance, MotionReveal } from "@/components/motion-effects";
 import { processSteps, services, siteImages } from "@/lib/site-data";
 import { faqs } from "@/lib/site-data";
 import { whatsappUrl } from "@/components/site-shell";
@@ -42,23 +43,31 @@ function HomePage() {
         />
         <div className="hero-overlay" />
         <div className="site-container relative z-10 flex min-h-[calc(100vh-5rem)] items-end pb-20 pt-32 md:items-center md:py-24">
-          <div className="max-w-3xl" data-reveal>
-            <p className="eyebrow text-accent">Agencia despachante de aduana</p>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl lg:text-7xl">
-              Su carga cruza fronteras. Nosotros despejamos el camino.
-            </h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-primary-foreground/80 md:text-xl">
-              Gestión profesional de importaciones, exportaciones y menaje doméstico desde Puerto
-              Suárez, Bolivia.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href={whatsappUrl} target="_blank" rel="noreferrer" className="button-accent">
-                Consultar una operación <ArrowRight size={18} />
-              </a>
-              <Link to="/servicios" className="button-ghost-light">
-                Conocer servicios
-              </Link>
-            </div>
+          <div className="max-w-3xl">
+            <MotionEntrance delay={0.12}>
+              <p className="eyebrow text-accent">Agencia despachante de aduana</p>
+            </MotionEntrance>
+            <MotionEntrance delay={0.28}>
+              <h1 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl lg:text-7xl">
+                Su carga cruza fronteras. Nosotros despejamos el camino.
+              </h1>
+            </MotionEntrance>
+            <MotionEntrance delay={0.44}>
+              <p className="mt-7 max-w-2xl text-base leading-8 text-primary-foreground/80 md:text-xl">
+                Gestión profesional de importaciones, exportaciones y menaje doméstico desde Puerto
+                Suárez, Bolivia.
+              </p>
+            </MotionEntrance>
+            <MotionEntrance delay={0.6}>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a href={whatsappUrl} target="_blank" rel="noreferrer" className="button-accent">
+                  Consultar una operación <ArrowRight size={18} />
+                </a>
+                <Link to="/servicios" className="button-ghost-light">
+                  Conocer servicios
+                </Link>
+              </div>
+            </MotionEntrance>
           </div>
         </div>
         <div className="hero-location">
@@ -66,16 +75,16 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-background py-10" data-reveal>
-        <div className="site-container grid gap-6 sm:grid-cols-3">
+      <section className="border-b border-border bg-background py-10">
+        <MotionReveal className="site-container grid gap-6 sm:grid-cols-3">
           <Stat icon={<Globe2 />} title="Comercio exterior" text="Importación y exportación" />
           <Stat icon={<FileCheck2 />} title="Gestión integral" text="Orientación y seguimiento" />
           <Stat icon={<MapPin />} title="Ubicación estratégica" text="Puerto Suárez, Bolivia" />
-        </div>
+        </MotionReveal>
       </section>
 
-      <section className="section-space bg-background" data-reveal>
-        <div className="site-container">
+      <section className="section-space bg-background">
+        <MotionReveal className="site-container">
           <div className="section-heading">
             <div>
               <p className="eyebrow text-primary">Lo que hacemos</p>
@@ -87,41 +96,41 @@ function HomePage() {
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {services.map((service, index) => (
-              <Link
-                key={service.slug}
-                to="/servicios/$slug"
-                params={{ slug: service.slug }}
-                className="home-service-card group"
-                data-reveal
-              >
-                <div className="home-service-image">
-                  <img
-                    src={service.image}
-                    alt={service.imageAlt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                    width={1200}
-                    height={760}
-                  />
-                  <span className="service-card-number">0{index + 1}</span>
-                </div>
-                <div className="flex items-center justify-between gap-4 p-6">
-                  <div>
-                    <h3 className="text-xl font-semibold">{service.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {service.summary}
-                    </p>
+              <MotionReveal key={service.slug} delay={index * 0.1}>
+                <Link
+                  to="/servicios/$slug"
+                  params={{ slug: service.slug }}
+                  className="home-service-card group"
+                >
+                  <div className="home-service-image">
+                    <img
+                      src={service.image}
+                      alt={service.imageAlt}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      width={1200}
+                      height={760}
+                    />
+                    <span className="service-card-number">0{index + 1}</span>
                   </div>
-                  <ArrowRight className="shrink-0 text-accent transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
+                  <div className="flex items-center justify-between gap-4 p-6">
+                    <div>
+                      <h3 className="text-xl font-semibold">{service.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                        {service.summary}
+                      </p>
+                    </div>
+                    <ArrowRight className="shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              </MotionReveal>
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
-      <section className="bg-secondary" data-reveal>
-        <div className="grid lg:grid-cols-2">
+      <section className="bg-secondary">
+        <MotionReveal className="grid lg:grid-cols-2">
           <div className="min-h-[430px] overflow-hidden lg:min-h-[650px]">
             <img
               src={siteImages.domesticMove}
@@ -146,11 +155,11 @@ function HomePage() {
               </Link>
             </div>
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
-      <section className="section-space bg-background" data-reveal>
-        <div className="site-container grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+      <section className="section-space bg-background">
+        <MotionReveal className="site-container grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
           <div>
             <p className="eyebrow text-primary">Cómo trabajamos</p>
             <h2 className="section-title mt-4">Claridad en cada etapa del despacho</h2>
@@ -167,11 +176,11 @@ function HomePage() {
               </li>
             ))}
           </ol>
-        </div>
+        </MotionReveal>
       </section>
 
-      <section className="section-space bg-background" data-reveal>
-        <div className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
+      <section className="section-space bg-background">
+        <MotionReveal className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="story-image-wrap">
             <img
               src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1400&q=85"
@@ -195,13 +204,13 @@ function HomePage() {
               Conocer Tartaria <ArrowRight size={18} />
             </Link>
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
       <FaqSection items={faqs} title="Información clara para avanzar con confianza" />
 
-      <section className="cta-band" data-reveal>
-        <div className="site-container flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
+      <section className="cta-band">
+        <MotionReveal className="site-container flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="eyebrow text-accent">Hablemos de su operación</p>
             <h2 className="mt-4 max-w-2xl text-3xl font-bold text-primary-foreground md:text-4xl">
@@ -211,7 +220,7 @@ function HomePage() {
           <a href={whatsappUrl} target="_blank" rel="noreferrer" className="button-accent shrink-0">
             Escribir por WhatsApp <ArrowRight size={18} />
           </a>
-        </div>
+        </MotionReveal>
       </section>
     </>
   );

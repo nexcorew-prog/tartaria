@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Award, Lightbulb, ShieldCheck, Target, Telescope } from "lucide-react";
+import { MotionReveal } from "@/components/motion-effects";
 import { PageIntro, whatsappUrl } from "@/components/site-shell";
 import { siteImages } from "@/lib/site-data";
 
@@ -33,8 +34,8 @@ function AboutPage() {
         title="Una agencia cercana a su operación"
         description="Desde Puerto Suárez acompañamos a empresas, comerciantes, familias y residentes que necesitan gestionar mercancías a través de fronteras."
       />
-      <section className="section-space bg-background" data-reveal>
-        <div className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
+      <section className="section-space bg-background">
+        <MotionReveal className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="overflow-hidden">
             <img
               src={siteImages.customsHero}
@@ -61,10 +62,10 @@ function AboutPage() {
               Hablar con la agencia <ArrowRight size={18} />
             </a>
           </div>
-        </div>
+        </MotionReveal>
       </section>
-      <section className="section-space bg-secondary" data-reveal>
-        <div className="site-container grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2">
+      <section className="section-space bg-secondary">
+        <MotionReveal className="site-container grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2">
           <Value
             icon={<Target />}
             title="Nuestra misión"
@@ -75,10 +76,10 @@ function AboutPage() {
             title="Nuestra visión"
             text="Ser la agencia despachante de aduana líder, reconocida por ofrecer soluciones de la más alta calidad en comercio exterior y aduanas; obtener la certificación como Operador Económico Autorizado (OEA) y efectuar despachos aduaneros en toda Bolivia."
           />
-        </div>
+        </MotionReveal>
       </section>
-      <section className="section-space bg-background" data-reveal>
-        <div className="site-container">
+      <section className="section-space bg-background">
+        <MotionReveal className="site-container">
           <div className="section-heading">
             <div>
               <p className="eyebrow text-primary">Nuestra esencia</p>
@@ -102,10 +103,10 @@ function AboutPage() {
               text="Desafiamos lo convencional y buscamos soluciones creativas a los retos de hoy y del futuro, en un mundo en constante cambio."
             />
           </div>
-        </div>
+        </MotionReveal>
       </section>
-      <section className="cta-band" data-reveal>
-        <div className="site-container flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
+      <section className="cta-band">
+        <MotionReveal className="site-container flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="eyebrow text-accent">Trabajemos juntos</p>
             <h2 className="mt-4 max-w-2xl text-3xl font-bold text-primary-foreground md:text-4xl">
@@ -115,7 +116,7 @@ function AboutPage() {
           <a href={whatsappUrl} target="_blank" rel="noreferrer" className="button-accent shrink-0">
             Hablemos de su operación <ArrowRight size={18} />
           </a>
-        </div>
+        </MotionReveal>
       </section>
     </>
   );

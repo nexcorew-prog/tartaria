@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, MapPin, MessageCircle, Phone } from "lucide-react";
 import { FaqSection } from "@/components/faq-section";
+import { MotionReveal } from "@/components/motion-effects";
 import { PageIntro, whatsappUrl } from "@/components/site-shell";
 import { faqs, siteImages } from "@/lib/site-data";
 
@@ -34,8 +35,8 @@ function ContactPage() {
         title="Cuéntenos qué necesita mover"
         description="Comparta los datos básicos de su operación y reciba orientación directa sobre los próximos pasos."
       />
-      <section className="section-space bg-background" data-reveal>
-        <div className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+      <section className="section-space bg-background">
+        <MotionReveal className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <div>
             <p className="eyebrow text-primary">Atención directa</p>
             <h2 className="section-title mt-4">Estamos en Puerto Suárez</h2>
@@ -85,7 +86,7 @@ function ContactPage() {
               operación.
             </p>
           </div>
-        </div>
+        </MotionReveal>
       </section>
       <FaqSection items={faqs.slice(0, 3)} title="¿Tiene preguntas antes de escribirnos?" />
     </>

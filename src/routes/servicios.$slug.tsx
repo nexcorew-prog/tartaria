@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { FaqSection } from "@/components/faq-section";
+import { MotionReveal } from "@/components/motion-effects";
 import { PageIntro, whatsappUrl } from "@/components/site-shell";
 import { faqs, services } from "@/lib/site-data";
 
@@ -43,12 +44,12 @@ function ServiceDetailPage() {
           title="Le ayudamos a encontrar el camino"
           description="Este servicio no está disponible. Revise nuestras soluciones aduaneras o cuéntenos qué necesita."
         />
-        <section className="section-space bg-background" data-reveal>
-          <div className="site-container">
+        <section className="section-space bg-background">
+          <MotionReveal className="site-container">
             <Link to="/servicios" className="button-primary">
               <ArrowLeft size={18} /> Ver todos los servicios
             </Link>
-          </div>
+          </MotionReveal>
         </section>
       </>
     );
@@ -63,7 +64,7 @@ function ServiceDetailPage() {
       <PageIntro eyebrow="Nuestros servicios" title={service.title} description={service.summary} />
       <section className="section-space bg-background">
         <div className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="service-detail-image" data-reveal>
+          <MotionReveal className="service-detail-image">
             <img
               src={service.image}
               alt={service.imageAlt}
@@ -71,8 +72,8 @@ function ServiceDetailPage() {
               width={1200}
               height={900}
             />
-          </div>
-          <div data-reveal>
+          </MotionReveal>
+          <MotionReveal delay={0.12}>
             <p className="eyebrow text-primary">Acompañamiento a su medida</p>
             <h2 className="section-title mt-4">Un proceso claro, de principio a fin</h2>
             <p className="mt-6 leading-8 text-muted-foreground">{service.detail}</p>
@@ -92,11 +93,11 @@ function ServiceDetailPage() {
             >
               Consultar este servicio <ArrowRight size={18} />
             </a>
-          </div>
+          </MotionReveal>
         </div>
       </section>
-      <section className="section-space bg-secondary" data-reveal>
-        <div className="site-container grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center">
+      <section className="section-space bg-secondary">
+        <MotionReveal className="site-container grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center">
           <div>
             <p className="eyebrow text-primary">¿Qué sigue?</p>
             <h2 className="section-title mt-4">Empezamos por conocer su operación</h2>
@@ -113,14 +114,14 @@ function ServiceDetailPage() {
               </li>
             ))}
           </ol>
-        </div>
+        </MotionReveal>
       </section>
       <FaqSection
         items={faqs.slice(0, 3)}
         title={`Preguntas sobre ${service.title.toLowerCase()}`}
       />
-      <section className="cta-band" data-reveal>
-        <div className="site-container flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
+      <section className="cta-band">
+        <MotionReveal className="site-container flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="eyebrow text-accent">Hablemos de su operación</p>
             <h2 className="mt-4 max-w-2xl text-3xl font-bold text-primary-foreground md:text-4xl">
@@ -135,7 +136,7 @@ function ServiceDetailPage() {
           >
             Consultar por WhatsApp <ArrowRight size={18} />
           </a>
-        </div>
+        </MotionReveal>
       </section>
       <section className="bg-background py-8">
         <div className="site-container">

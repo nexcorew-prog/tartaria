@@ -1,4 +1,5 @@
 import { Plus } from "lucide-react";
+import { MotionReveal } from "@/components/motion-effects";
 
 type FaqItem = {
   question: string;
@@ -13,8 +14,8 @@ export function FaqSection({
   title?: string;
 }) {
   return (
-    <section className="section-space bg-secondary" data-reveal>
-      <div className="site-container grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+    <section className="section-space bg-secondary">
+      <MotionReveal className="site-container grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
         <div>
           <p className="eyebrow text-primary">Preguntas frecuentes</p>
           <h2 className="section-title mt-4">{title}</h2>
@@ -39,7 +40,7 @@ export function FaqSection({
             </details>
           ))}
         </div>
-      </div>
+      </MotionReveal>
     </section>
   );
 }
