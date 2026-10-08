@@ -186,3 +186,155 @@
 @utility whatsapp-float { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; display: grid; width: 3.25rem; height: 3.25rem; place-items: center; border-radius: 999px; background: var(--color-accent); color: var(--color-accent-foreground); box-shadow: 0 12px 28px color-mix(in oklab, var(--color-ink) 22%, transparent); transition: transform .2s ease; &:hover { transform: translateY(-3px); } }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+.hero-image {
+  animation: hero-drift 28s ease-in-out infinite alternate;
+}
+
+.page-intro {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(ellipse at 82% 25%, color-mix(in oklab, var(--color-accent) 24%, transparent), transparent 34%),
+    linear-gradient(120deg, var(--color-ink), var(--color-primary));
+}
+
+.page-intro::after {
+  position: absolute;
+  right: -8rem;
+  bottom: -16rem;
+  width: 34rem;
+  height: 34rem;
+  border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 12%, transparent);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.service-card,
+.home-service-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.service-card:hover,
+.home-service-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in oklab, var(--color-primary) 35%, var(--color-border));
+  box-shadow: 0 20px 50px color-mix(in oklab, var(--color-ink) 10%, transparent);
+}
+
+.service-card-image,
+.home-service-image {
+  position: relative;
+  height: clamp(14rem, 28vw, 21rem);
+  overflow: hidden;
+  background: var(--color-secondary);
+}
+
+.home-service-image {
+  height: clamp(13rem, 23vw, 18rem);
+}
+
+.service-card-number {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, white 45%, transparent);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--color-ink) 70%, transparent);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.service-detail-image,
+.story-image-wrap {
+  min-height: 22rem;
+  overflow: hidden;
+  background: var(--color-secondary);
+}
+
+.service-detail-image {
+  height: clamp(22rem, 44vw, 36rem);
+}
+
+.story-image-wrap {
+  height: clamp(20rem, 38vw, 32rem);
+}
+
+.contact-photo {
+  position: relative;
+  height: 15rem;
+  overflow: hidden;
+  background: var(--color-secondary);
+}
+
+.contact-photo::after {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, color-mix(in oklab, var(--color-ink) 76%, transparent));
+  content: "";
+}
+
+.contact-photo figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 1.25rem;
+  bottom: 1.1rem;
+  left: 1.25rem;
+  color: white;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+@supports (animation-timeline: view()) {
+  [data-reveal] {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image {
+    animation: none;
+  }
+
+  [data-reveal] {
+    animation: none;
+  }
+}
